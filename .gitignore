@@ -9,13 +9,16 @@ __pycache__/
 dist/
 build/
 
-# 训练结果 - 模型文件太大不上传
-results/models/
+# 训练结果（只忽略非.pth文件）
+results/models/*
+!results/models/*.pth
+
+# 其他结果目录
 logs/
 images/
 
-# 数据集
-a_dataset/.DS_Store
+# SwanLab 日志
+swanlog/
 
 # IDE
 .idea/
@@ -26,15 +29,6 @@ a_dataset/.DS_Store
 .env
 .venv
 env/
-
-# SwanLab 日志
-swanlog/
-
-# 日志
-*.log
-
-# Docker
-.dockerignore
 
 # 临时文件
 *.swp
@@ -47,3 +41,7 @@ swanlog/
 *.png
 *.mp4
 *.avi
+
+# 文档
+NOTIFICATION_GUIDE.md
+TRAINING_GUIDE.md
