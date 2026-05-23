@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# 训练结果 - 模型文件太大不上传
+results/models/
+logs/
+images/
+
+# 数据集
+a_dataset/.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 环境
+.env
+.venv
+env/
+
+# SwanLab 日志
+swanlog/
+
+# 日志
+*.log
+
+# Docker
+.dockerignore
+
+# 临时文件
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 图片和视频
+*.jpg
+*.png
+*.mp4
+*.avi

@@ -1,0 +1,81 @@
+# 实验配置文件
+# 用于管理批量训练任务的配置
+
+project:
+  name: "CLEANZJU_modified_model_CBAM_lr0.005"
+  description: "Knowledge distillation for anomaly detection with modified model structure"
+
+# GPU 配置
+gpu:
+  # 可用的 GPU 设备 ID 列表
+  devices: [0, 1, 2, 3]
+  # 是否自动负载均衡
+  auto_balance: true
+  # 每个 GPU 最大并发任务数
+  max_concurrent_per_gpu: 1
+
+# 训练配置
+training:
+  num_epochs: 150
+  early_stop_patience: 15
+  learning_rate: 0.005
+  batch_size: 4
+  validation_ratio: 0.3
+  partial_data: false
+  subset_ratio: null  # null 表示使用全部数据
+  DG: false
+
+# 数据集配置
+dataset:
+  # 要训练的 pattern 列表
+  patterns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+  # 每个 pattern 的重复训练次数
+  repeat_times: 5
+  # 是否按 groups 划分
+  divide_by_groups: false
+  # 是否按 patterns 划分
+  divide_by_patterns: true
+
+# 实验管理
+experiment:
+  # 实验名称模板
+  name_template: "DG_off_{epochs}epochs_pattern{pattern}_repeat{repeat}"
+  # 是否启用断点续训
+  resume: false
+  # 检查点保存路径
+  checkpoint_dir: "./results/models"
+  # 日志保存路径
+  log_dir: "./logs"
+  # 是否启用可视化
+  visualize: true
+  # 图像保存路径
+  image_dir: "./images"
+
+# SwanLab 配置
+swanlab:
+  # 项目名称
+  project: "CLEANZJU_CBAM_lr0.005_batch4_epochs150_patience15_DGoff"
+  # 工作空间（可选）
+  workspace: null
+  # 是否启用
+  enabled: true
+
+# 任务调度配置
+scheduler:
+  # 任务失败后的重试次数
+  max_retries: 2
+  # 任务超时时间（分钟）
+  timeout: 120
+  # 是否在任务失败后继续执行后续任务
+  continue_on_failure: false
+  # 任务执行顺序: sequential（顺序）, parallel（并行）, round_robin（轮询）
+  execution_mode: "round_robin"
+
+# 通知配置
+notification:
+  # 是否启用通知
+  enabled: false
+  # 通知服务器 URL（例如：http://192.168.1.100:8888）
+  url: ""
+  # 请求超时时间（秒）
+  timeout: 5

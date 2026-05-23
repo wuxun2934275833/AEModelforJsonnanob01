@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  anomaly_detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jetson-anomaly-detection:latest
+    container_name: anomaly_detector
+    runtime: nvidia
+    environment:
+      - DISPLAY=${DISPLAY}
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - ./results:/workspace/results
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    devices:
+      - /dev/video0:/dev/video0
+    ports:
+      - "8888:8888"
+    shm_size: '2gb'
+    restart: unless-stopped
