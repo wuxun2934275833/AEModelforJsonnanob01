@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --no-cache-dir \
     scipy \
-    pillow \
+    "pillow<9" \
     pyyaml
 
 # 复制推理所需的项目文件（只保留部署必需的内容）
