@@ -23,7 +23,7 @@ from c_utils.a_functions import cal_anomaly_maps, cal_loss
 def load_models(model_path, device):
     """加载教师模型和学生模型"""
     # 加载教师模型 (用于提取特征)
-    model_t = TeacherModel(backbone_name="resnet34", out_indices=[0, 1, 2, 3]).to(device)
+    model_t = TeacherModel(backbone_name="resnet18", out_indices=[0, 1, 2, 3]).to(device)
     for param in model_t.parameters():
         param.requires_grad = False
     model_t.eval()
