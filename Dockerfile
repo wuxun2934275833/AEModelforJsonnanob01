@@ -26,7 +26,8 @@ RUN apt-get update && apt-get install -y \
     && pip3 install --no-cache-dir \
     scipy \
     "pillow<9" \
-    pyyaml
+    pyyaml \
+    timm
 
 # 复制推理所需的项目文件（只保留部署必需的内容）
 COPY b_models_and_sub_models /workspace/b_models_and_sub_models
