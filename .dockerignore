@@ -1,0 +1,12 @@
+# 排除大文件和不必要的目录
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.idea
+.vscode
+*.log
+.git
+.gitignore
+a_dataset
+.dockerignore

@@ -26,13 +26,12 @@ RUN apt-get update && apt-get install -y \
     && pip3 install --no-cache-dir \
     scipy \
     pillow \
-    pyyaml \
-    swanlab
+    pyyaml
 
-# 复制项目文件 (排除大文件和不必要的目录)
+# 复制推理所需的项目文件（只保留部署必需的内容）
 COPY b_models_and_sub_models /workspace/b_models_and_sub_models
 COPY c_utils /workspace/c_utils
-COPY a_dataset /workspace/a_dataset
+COPY results /workspace/results
 COPY realtime_inference.py /workspace/realtime_inference.py
 COPY config.yaml /workspace/config.yaml
 
