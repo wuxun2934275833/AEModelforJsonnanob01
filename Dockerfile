@@ -6,6 +6,9 @@ FROM nvcr.io/nvidia/l4t-pytorch:r32.7.1-pth1.10-py3
 # 设置工作目录
 WORKDIR /workspace
 
+# 修复apt源签名问题
+RUN rm -f /etc/apt/sources.list.d/kitware.list* || true
+
 # 安装必要的系统包和Python依赖
 RUN apt-get update && apt-get install -y \
     libopencv-dev \
